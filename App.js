@@ -9,9 +9,10 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       {/* <StatusBar hidden={true} translucent={true}/> */}
 
-      <Signup />
-      {/* <Login/>    */}
-      {/* <Main/>  */}
+      {/* <Signup /> */}
+     {/* <Login/>  */}
+
+     <Main/>  
     </SafeAreaView>
   );
 };

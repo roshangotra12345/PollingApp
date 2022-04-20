@@ -20,13 +20,11 @@ const Main = () => {
       </ImageBackground>
 
       <View>
-        <ImageBackground
-          source={require('../Assessts/rok.png')}
-          style={styles.rectangle}>
-          <TouchableOpacity style={styles.logoContainer}>
-            <Text style={styles.logo}>Sign In Your Account</Text>
-          </TouchableOpacity>
-        </ImageBackground>
+       
+      <TouchableOpacity style={styles.button}>
+            
+            <Text style={styles.butto}>Login</Text>
+      </TouchableOpacity>
       </View>
     </>
   );
@@ -71,4 +69,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  button:{
+    
+    backgroundColor:"#121515",
+    height:80,
+    justifyContent:"center",
+    alignContent:"center",
+    textAlign:"center",
+    alignItems:"center",
+    fontSize:54,
+    color:"white"
+
+  },
+  butto:{
+   fontSize:24,
+   color:"white"
+  }
 });

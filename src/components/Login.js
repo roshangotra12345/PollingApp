@@ -37,10 +37,10 @@ const Login = () => {
             </View>
           </ScrollView>
 
-          <TouchableOpacity>
-            <ImageBackground
-              source={require('../Assessts/Button.png')}
-              style={styles.btton}></ImageBackground>
+       
+          <TouchableOpacity style={styles.button}>
+            
+                <Text style={styles.butto}>Login</Text>
           </TouchableOpacity>
         </ImageBackground>
       </ImageBackground>
@@ -101,4 +101,20 @@ const styles = StyleSheet.create({
     marginRight: 20,
     backgroundColor: '#1A1E1E',
   },
+  button:{
+    
+    backgroundColor:"#19A54A",
+    height:80,
+    justifyContent:"center",
+    alignContent:"center",
+    textAlign:"center",
+    alignItems:"center",
+    fontSize:54,
+    color:"white"
+
+  },
+  butto:{
+   fontSize:24,
+   color:"white"
+  }
 });
