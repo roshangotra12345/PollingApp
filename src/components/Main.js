@@ -20,11 +20,11 @@ const Main = ({navigation}) => {
       </ImageBackground>
 
       <View>
-       
-      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Login')}>
-            
-            <Text style={styles.butto}>Sign In Your Account</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.butto}>Sign In Your Account</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -69,20 +69,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button:{
-    
-    backgroundColor:"#121515",
-    height:80,
-    justifyContent:"center",
-    alignContent:"center",
-    textAlign:"center",
-    alignItems:"center",
-    fontSize:54,
-    color:"white"
-
+  button: {
+    backgroundColor: '#121515',
+    height: 80,
+    justifyContent: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: 54,
+    color: 'white',
   },
-  butto:{
-   fontSize:24,
-   color:"white"
-  }
+  butto: {
+    fontSize: 24,
+    color: 'white',
+  },
 });

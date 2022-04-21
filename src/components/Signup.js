@@ -7,9 +7,33 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 
 const Signup = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // function handleClick() {
+  //    let item = {name,email,Password}
+  //    console.log(item,"------------------------")
+
+  //   }
+
+  const handleClick = async () => {
+    try {
+      let response = await axios.get(
+        `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`,
+      );
+      let item = {name, email, password};
+      console.log(item, '------------------------');
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <ImageBackground
@@ -26,17 +50,30 @@ const Signup = ({navigation}) => {
               </View>
               <View style={styles.email}>
                 <Text style={styles.text3}>Your NAME</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  style={styles.textInput}
+                  value={name}
+                  onChangeText={name => setName(name)}
+                />
               </View>
 
               <View style={styles.email}>
                 <Text style={styles.text3}>Your Email</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  style={styles.textInput}
+                  value={email}
+                  onChangeText={email => setEmail(email)}
+                />
               </View>
 
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  style={styles.textInput}
+                  secureTextEntry={true}
+                  value={password}
+                  onChangeText={password => setPassword(password)}
+                />
                 <TouchableOpacity
                   style={styles.text2}
                   onPress={() => navigation.goBack()}>
@@ -45,7 +82,7 @@ const Signup = ({navigation}) => {
               </View>
             </View>
           </ScrollView>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleClick}>
             <Text style={styles.butto}>Register</Text>
           </TouchableOpacity>
         </ImageBackground>

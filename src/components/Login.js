@@ -7,9 +7,27 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 
 const Login = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onHandleClick = async () => {
+    try {
+      let response = await axios.get(
+        `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,
+      );
+      let item = {name, password};
+      console.log(item, '------------------------');
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <ImageBackground
@@ -26,23 +44,28 @@ const Login = ({navigation}) => {
               </View>
 
               <View style={styles.email}>
-                <Text style={styles.text3}>Your Email</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={styles.text3}>Your Name</Text>
+                <TextInput
+                  onChangeText={name => setName(name)}
+                  style={styles.textInput}
+                />
               </View>
 
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  onChangeText={password => setPassword(password)}
+                  secureTextEntry={true}
+                  style={styles.textInput}
+                />
               </View>
               <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
                 <Text style={styles.text3}>New User Click Here?</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Question')}>
+          {/* onPress={() => navigation.navigate('Question')} */}
+          <TouchableOpacity style={styles.button} onPress={onHandleClick}>
             <Text style={styles.butto}>Login</Text>
           </TouchableOpacity>
         </ImageBackground>
@@ -68,7 +91,7 @@ const styles = StyleSheet.create({
   btton: {
     width: '100%',
 
-    height: 80,
+    height: 60,
   },
   text: {
     color: 'white',
@@ -103,6 +126,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: '#1A1E1E',
+    color: 'white',
   },
   button: {
     backgroundColor: '#19A54A',
