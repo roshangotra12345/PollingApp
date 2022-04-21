@@ -1,19 +1,15 @@
 import {StyleSheet, SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import Login from './src/components/Login';
-import Signup from './src/components/Signup';
-import Main from './src/components/Main';
+import { NavigationContainer } from '@react-navigation/native';
+import MyStack from "./src/components/Navigation/Navigation"
 
 const App = () => {
   return (
+    <NavigationContainer>
     <SafeAreaView style={styles.container}>
-      {/* <StatusBar hidden={true} translucent={true}/> */}
-
-      {/* <Signup /> */}
-     {/* <Login/>  */}
-
-     <Main/>  
+       <MyStack/>
     </SafeAreaView>
+    </NavigationContainer>
   );
 };
 

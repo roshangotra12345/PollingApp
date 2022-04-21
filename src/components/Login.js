@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <>
       <ImageBackground
@@ -34,11 +34,16 @@ const Login = () => {
                 <Text style={styles.text3}>Password</Text>
                 <TextInput style={styles.textInput} />
               </View>
+              <TouchableOpacity onPress={()=>navigation.navigate('Signup')}>
+
+              <Text style={styles.text3}>New User Click Here?</Text>
+              </TouchableOpacity>
             </View>
+
           </ScrollView>
 
        
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Question')}>
             
                 <Text style={styles.butto}>Login</Text>
           </TouchableOpacity>
