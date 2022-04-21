@@ -9,29 +9,35 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {signupRequest} from '../Redux/actions';
 
 const Signup = ({navigation}) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // function handleClick() {
-  //    let item = {name,email,Password}
-  //    console.log(item,"------------------------")
-
-  //   }
 
   const handleClick = async () => {
-    try {
-      let response = await axios.get(
-        `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`,
-      );
-      let item = {name, email, password};
-      console.log(item, '------------------------');
+    dispatch(
+      signupRequest({
+        username: name,
+        password: password,
+        role: 'admin',
+      }),
+    );
 
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   let response = await axios.get(
+    //     `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`,
+    //   );
+    //   let item = {name, email, password};
+    //   console.log(item, '------------------------');
+
+    //   console.log(response);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (

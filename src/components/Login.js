@@ -9,23 +9,32 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginRequest} from '../Redux/actions';
 
 const Login = ({navigation}) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   const onHandleClick = async () => {
-    try {
-      let response = await axios.get(
-        `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,
-      );
-      let item = {name, password};
-      console.log(item, '------------------------');
+    dispatch(
+      loginRequest({
+        username: name,
+        password: password,
+      }),
+    );
+    // try {
+    //   let response = await axios.get(
+    //     `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,
+    //   );
+    //   let item = {name, password};
+    //   console.log(item, '------------------------');
 
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    //   console.log(response);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
