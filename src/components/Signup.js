@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const Login = () => {
+const Signup = ({navigation}) => {
   return (
     <>
       <ImageBackground
@@ -37,13 +37,16 @@ const Login = () => {
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
                 <TextInput style={styles.textInput} />
+                <TouchableOpacity
+                  style={styles.text2}
+                  onPress={() => navigation.goBack()}>
+                  <Text style={styles.text2}>Go To Login</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </ScrollView>
-
           <TouchableOpacity style={styles.button}>
-            
-                <Text style={styles.butto}>Register</Text>
+            <Text style={styles.butto}>Register</Text>
           </TouchableOpacity>
         </ImageBackground>
       </ImageBackground>
@@ -51,7 +54,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
 
 const styles = StyleSheet.create({
   container: {
@@ -101,26 +104,24 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   textInput: {
-    padding: 15,
+    padding: 10,
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: '#1A1E1E',
     color: 'white',
   },
-  button:{
-    
-    backgroundColor:"#19A54A",
-    height:80,
-    justifyContent:"center",
-    alignContent:"center",
-    textAlign:"center",
-    alignItems:"center",
-    fontSize:54,
-    color:"white"
-
+  button: {
+    backgroundColor: '#19A54A',
+    height: 60,
+    justifyContent: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: 54,
+    color: 'white',
   },
-  butto:{
-   fontSize:24,
-   color:"white"
-  }
+  butto: {
+    fontSize: 24,
+    color: 'white',
+  },
 });

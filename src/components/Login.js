@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <>
       <ImageBackground
@@ -34,13 +34,16 @@ const Login = () => {
                 <Text style={styles.text3}>Password</Text>
                 <TextInput style={styles.textInput} />
               </View>
+              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                <Text style={styles.text3}>New User Click Here?</Text>
+              </TouchableOpacity>
             </View>
           </ScrollView>
 
-       
-          <TouchableOpacity style={styles.button}>
-            
-                <Text style={styles.butto}>Login</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Question')}>
+            <Text style={styles.butto}>Login</Text>
           </TouchableOpacity>
         </ImageBackground>
       </ImageBackground>
@@ -101,20 +104,18 @@ const styles = StyleSheet.create({
     marginRight: 20,
     backgroundColor: '#1A1E1E',
   },
-  button:{
-    
-    backgroundColor:"#19A54A",
-    height:80,
-    justifyContent:"center",
-    alignContent:"center",
-    textAlign:"center",
-    alignItems:"center",
-    fontSize:54,
-    color:"white"
-
+  button: {
+    backgroundColor: '#19A54A',
+    height: 80,
+    justifyContent: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: 54,
+    color: 'white',
   },
-  butto:{
-   fontSize:24,
-   color:"white"
-  }
+  butto: {
+    fontSize: 24,
+    color: 'white',
+  },
 });

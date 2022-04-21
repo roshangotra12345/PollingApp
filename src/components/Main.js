@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const Main = () => {
+const Main = ({navigation}) => {
   return (
     <>
       <ImageBackground
@@ -21,9 +21,9 @@ const Main = () => {
 
       <View>
        
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Login')}>
             
-            <Text style={styles.butto}>Login</Text>
+            <Text style={styles.butto}>Sign In Your Account</Text>
       </TouchableOpacity>
       </View>
     </>
