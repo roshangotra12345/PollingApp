@@ -37,7 +37,9 @@ const Signup = ({navigation}) => {
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
                 <TextInput style={styles.textInput} />
-                <TouchableOpacity style={styles.text2}  onPress={()=>navigation.goBack()}>
+                <TouchableOpacity
+                  style={styles.text2}
+                  onPress={() => navigation.goBack()}>
                   <Text style={styles.text2}>Go To Login</Text>
                 </TouchableOpacity>
               </View>
