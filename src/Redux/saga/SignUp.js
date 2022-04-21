@@ -4,11 +4,11 @@ import * as action from '../constant';
 import axios from 'axios';
 
 function* SignUp(action) {
-  const {name, password,admin} = action.payload;
-  let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`;
+  const {username, password,role} = action.payload;
+  let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${username}&password=${password}&role=admin`;
   try {
-    let response = yield call(axios.get, url);
-    console.log(response, 'response');
+    let response = yield call(axios.post, url);
+    console.log(response, 'response' , action.payload);
     if (response?.data?.error) {
       yield put(signupError({error: response?.data?.data}));
     } else {
