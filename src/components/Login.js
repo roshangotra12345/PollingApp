@@ -8,22 +8,43 @@ import {
   ScrollView,
 } from 'react-native';
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginRequest} from '../Redux/actions';
+import login from '../Redux/reducer/login';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const data = useSelector(state => state && state.login && state.login.data);
 
+  // useEffect(() => {
+  //   const handlCheck = () => {
+  //     console.log(data, 'data___________');
+  //     if (data?.error == 'user not exists') {
+  //       navigation.navigate('Signup');
+  //     } else {
+  //       navigation.navigate('Question');
+  //     }
+  //   };
+  //   handlCheck();
+  // }, [data]);
+
+  console.log(data, '---------------> useSelector login');
   const onHandleClick = async () => {
-    dispatch(
-      loginRequest({
-        username: name,
-        password: password,
-      }),
-    );
+    console.log(name, password);
+    if (name.length > 3 && password.length > 4) {
+      dispatch(
+        loginRequest({
+          username: name,
+          password: password,
+          navigation:navigation
+        }),
+      );
+    } else {
+      alert('Please fill Your Details');
+    }
     // try {
     //   let response = await axios.get(
     //     `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,

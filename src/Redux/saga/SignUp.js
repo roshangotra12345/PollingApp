@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function* SignUp(action) {
   const {username, password,role} = action.payload;
-  let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${username}&password=${password}&role=admin`;
+  let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${username}&password=${password}&role=${role}`;
   try {
     let response = yield call(axios.post, url);
     console.log(response, 'response' , action.payload);
