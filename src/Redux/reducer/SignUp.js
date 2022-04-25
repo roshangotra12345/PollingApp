@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const Signup = (state = initialState, action) => {
-    console.log(action)
   switch (action.type) {
     case constant.SIGNUP_REQUEST:
       return {

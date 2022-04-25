@@ -4,15 +4,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import MyStack from './src/components/Navigation/Navigation';
 import {Provider} from 'react-redux';
 import store from './src/Redux/Store';
+import 'react-native-gesture-handler'
 
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      {/* <NavigationContainer> */}
         <SafeAreaView style={styles.container}>
           <MyStack />
         </SafeAreaView>
-      </NavigationContainer>
+      {/* </NavigationContainer> */}
     </Provider>
   );
 };

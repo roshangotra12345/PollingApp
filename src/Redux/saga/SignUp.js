@@ -8,7 +8,6 @@ function* SignUp(action) {
   let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${username}&password=${password}&role=${role}`;
   try {
     let response = yield call(axios.post, url);
-    console.log(response, 'response' , action.payload);
     if (response?.data?.error) {
       yield put(signupError({error: response?.data?.data}));
     } else {

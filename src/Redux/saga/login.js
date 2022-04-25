@@ -8,7 +8,6 @@ function* login(action) {
   let url = `https://secure-refuge-14993.herokuapp.com/login?username=${username}&password=${password}`;
   try {
     let response = yield call(axios.get, url);
-    console.log(response, 'response');
     if (response?.data?.error) {
       yield put(loginError());
       navigation.navigate('Signup')

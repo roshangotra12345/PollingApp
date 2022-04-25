@@ -21,7 +21,6 @@ const Login = ({navigation}) => {
 
   // useEffect(() => {
   //   const handlCheck = () => {
-  //     console.log(data, 'data___________');
   //     if (data?.error == 'user not exists') {
   //       navigation.navigate('Signup');
   //     } else {
@@ -31,9 +30,7 @@ const Login = ({navigation}) => {
   //   handlCheck();
   // }, [data]);
 
-  console.log(data, '---------------> useSelector login');
   const onHandleClick = async () => {
-    console.log(name, password);
     if (name.length > 3 && password.length > 4) {
       dispatch(
         loginRequest({
@@ -50,11 +47,8 @@ const Login = ({navigation}) => {
     //     `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,
     //   );
     //   let item = {name, password};
-    //   console.log(item, '------------------------');
 
-    //   console.log(response);
     // } catch (error) {
-    //   console.log(error);
     // }
   };
 

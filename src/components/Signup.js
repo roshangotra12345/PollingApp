@@ -42,11 +42,8 @@ const Signup = ({navigation}) => {
     //     `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`,
     //   );
     //   let item = {name, email, password};
-    //   console.log(item, '------------------------');
 
-    //   console.log(response);
     // } catch (error) {
-    //   console.log(error);
     // }
   };
 

@@ -5,16 +5,16 @@ const initialState = {
   isError: false,
 };
 
-const login = (state = initialState, action) => {
+const ALLdelete = (state = initialState, action) => {
   switch (action.type) {
-    case constant.LOGIN_REQUEST:
+    case constant.ALLDELETE_REQUEST:
       return {
         ...state,
         isLoading: true,
         isSuccess: false,
         isError: false,
       };
-    case constant.LOGIN_SUCCESS:
+    case constant.ALLDELETE_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -22,7 +22,7 @@ const login = (state = initialState, action) => {
         isError: false,
         data: action.payload
       };
-    case constant.LOGIN_ERROR:
+    case constant.ALLDELETE_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -36,4 +36,4 @@ const login = (state = initialState, action) => {
   }
 };
 
-export default login;
+export default ALLdelete;

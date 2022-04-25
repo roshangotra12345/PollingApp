@@ -12,3 +12,12 @@ export const signupError = createAction(constant.SIGNUP_ERROR);
 export const alllistRequest = createAction(constant.ALLLIST_REQUEST);
 export const alllistSuccess = createAction(constant.ALLLIST_SUCCESS);
 export const alllistError = createAction(constant.ALLLIST_ERROR);
+
+export const deleteRequest = createAction(constant.DELETE_REQUEST);
+export const deleteSuccess = createAction(constant.DELETE_SUCCESS);
+export const deleteError = createAction(constant.DELETE_ERROR);
+
+
+export const alldeleteRequest = createAction(constant.ALLDELETE_REQUEST);
+export const alldeleteSuccess = createAction(constant.ALLDELETE_SUCCESS);
+export const alldeleteError = createAction(constant.ALLDELETE_ERROR);
