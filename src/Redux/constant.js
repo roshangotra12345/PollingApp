@@ -22,3 +22,8 @@ export const ALLDELETE_ERROR = 'ALLDELETE_ERROR';
 export const OPTION_REQUEST = 'OPTION_REQUEST';
 export const OPTION_SUCCESS = 'OPTION_SUCCESS';
 export const OPTION_ERROR = 'OPTION_ERROR';
+
+
+export const TITLE_REQUEST = 'TITLE_REQUEST';
+export const TITLE_SUCCESS = 'TITLE_SUCCESS';
+export const TITLE_ERROR = 'TITLE_ERROR';

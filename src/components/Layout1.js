@@ -1,50 +1,36 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View,TextInput } from "react-native";
-import { optionRequest,alllistRequest } from "../Redux/actions";
 import {useDispatch, useSelector} from 'react-redux';
+const Layout1 = ({modalVisible1,setModalVisible1}) => {
+  //const [modalVisible1 , setModalVisible1] = useState(false);
 
-const Layout = ({modalVisible,setModalVisible , idState}) => {
-  const [option, setOption] = useState('');
-  //const [modalVisible , setModalVisible] = useState(false);
-  const dispatch = useDispatch();
-  const optionOperation = async () => {
-    console.log(idState , option , "-----------> edit")
-    dispatch(optionRequest({id : idState, 
-      option:option}));
-    setTimeout(() => {
-      dispatch(alllistRequest());
-    }, 10);
-    setModalVisible(!modalVisible);
-  };
-  
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        visible={modalVisible1}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
+          setModalVisible1(!modalVisible1);
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <TextInput style={styles.textInput} value={option} onChangeText={option => setOption(option)}/>
+            <TextInput style={styles.textInput} />
 {/*             
             <Text style={styles.modalText}>Hello World!</Text> */}
             <View style={styles.box}>
             <Pressable
               style={styles.btn}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => setModalVisible1(!modalVisible1)}
             >
-              <Text style={styles.textStyle}>option</Text>
+              <Text style={styles.textStyle}>cancel</Text>
             </Pressable>
 
             <Pressable
               style={styles.btn}
-              // onPress={() => setModalVisible(!modalVisible)}
-              onPress={optionOperation}
+              onPress={() => setModalVisible1(!modalVisible1)}
             >
               <Text style={styles.textStyle}>Done</Text>
             </Pressable>
@@ -124,10 +110,9 @@ const styles = StyleSheet.create({
     borderWidth:2,
     width:200,
     borderRadius:10,
-    margin:20,
-    color:"red"
+    margin:20
 
   }
 });
 
-export default Layout;
+export default Layout1;

@@ -5,6 +5,7 @@ import { AllListSaga } from './AllList';
 import { DeleteSaga } from './Delete';
 import { ALLDeleteSaga } from './ALLDelete';
 import { OptionSaga } from './Option';
+import { TitleSaga } from './EditTitle';
 
 export default function* rootSaga() {
     yield all([fork(loginSaga)]);
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     yield all([fork(DeleteSaga)])
     yield all([fork(ALLDeleteSaga)])
     yield all([fork(OptionSaga)])
+    yield all([fork(TitleSaga)])
   
 }

@@ -5,18 +5,16 @@ const initialState = {
   isError: false,
 };
 
-
-const Options = (state = initialState, action) => {
-  console.log(action,"--------------------option");
+const EditTitle = (state = initialState, action) => {
   switch (action.type) {
-    case constant.OPTION_REQUEST:
+    case constant.TITLE_REQUEST:
       return {
         ...state,
         isLoading: true,
         isSuccess: false,
         isError: false,
       };
-    case constant.OPTION_SUCCESS:
+    case constant.TITLE_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -24,7 +22,7 @@ const Options = (state = initialState, action) => {
         isError: false,
         data: action.payload
       };
-    case constant.OPTION_ERROR:
+    case constant.TITLE_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -38,4 +36,4 @@ const Options = (state = initialState, action) => {
   }
 };
 
-export default Options;
+export default EditTitle;

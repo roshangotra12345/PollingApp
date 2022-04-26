@@ -10,6 +10,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 //import Layout from './Layout';
 //const Myicon = <Icon name="trash" size={30} color="#fff" />
 
+
 const Question = ({navigation}) => {
   const dispatch = useDispatch();
   const data = useSelector(state => state);

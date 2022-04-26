@@ -4,9 +4,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Layout from './Layout';
+import Layout1 from './Layout1';
 const Operation = props => {
   const [newPoll, setNewPoll] = useState([]);
   const [modalVisible , setModalVisible] = useState(false);
+  const [modalVisible1 , setModalVisible1] = useState(false);
+  const [idState , setidState] = useState("")
+  
+  const handleModal = (id) =>{
+    setidState(id)
+  setModalVisible(!modalVisible);
+  } 
+  const handleModal1 = () =>{
+    setModalVisible1(!modalVisible1);
+    } 
   const dispatch = useDispatch();
   const data = useSelector(state => state.AllList.data.data);
 
@@ -18,7 +29,7 @@ const Operation = props => {
     setNewPoll(newPoll);
   }, []);
 
-  console.log(newPoll);
+  console.log(idState);
 
   return (
     <View style={styles.view1}>
@@ -28,19 +39,16 @@ const Operation = props => {
             <View >
               <View style={styles.one}>
                 <Text>{item.title}</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleModal1 }>
                   <Icon name="edit" size={30} color="white" />
                 </TouchableOpacity>
               </View>
               {item?.options.map(newItem => {
                 return <Text style={styles.option}>{newItem.option}</Text>;
               })}
-
-
-
-              
-
-
+                <TouchableOpacity onPress={()=>handleModal(item._id)}>
+                  <Text style={styles.btn}>Add New Option</Text>
+                </TouchableOpacity>
             </View>
 
             
@@ -52,15 +60,13 @@ const Operation = props => {
 
 
               
-                <TouchableOpacity>
-                  <Text style={styles.btn}>Add New Option</Text>
-                </TouchableOpacity>
             
           
                 <TouchableOpacity>
                   <Text style={styles.btn}>Submit Your poll</Text>
                 </TouchableOpacity>
-               <Layout/> 
+               <Layout modalVisible={modalVisible} setModalVisible={setModalVisible} idState={idState} /> 
+               <Layout1 modalVisible1={modalVisible1} setModalVisible1={setModalVisible1}/>
           
             
 

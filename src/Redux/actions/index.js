@@ -21,3 +21,14 @@ export const deleteError = createAction(constant.DELETE_ERROR);
 export const alldeleteRequest = createAction(constant.ALLDELETE_REQUEST);
 export const alldeleteSuccess = createAction(constant.ALLDELETE_SUCCESS);
 export const alldeleteError = createAction(constant.ALLDELETE_ERROR);
+
+
+export const optionRequest = createAction(constant.OPTION_REQUEST);
+export const optionSuccess = createAction(constant.OPTION_SUCCESS);
+export const optionError = createAction(constant.OPTION_ERROR);
+
+
+
+export const titleRequest = createAction(constant.TITLE_REQUEST);
+export const titleSuccess = createAction(constant.TITLE_SUCCESS);
+export const titleError = createAction(constant.TITLE_ERROR)

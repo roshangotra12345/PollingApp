@@ -5,12 +5,13 @@ import * as action from '../constant';
 import axios from 'axios';
 
 function* Option(action) {
-    const {username, password,role} = action.payload;
-    let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${username}&password=${password}&role=${role}`;
-    try {
-      let response = yield call(axios.post, url);
+  const {option , id} = action.payload
+  console.log(option , "saaaaaaa")
+  let url = `https://secure-refuge-14993.herokuapp.com/add_new_option?id=${id}&option_text=${option}`
+  try {
+    let response = yield call(axios.post, url);
       if (response?.data?.error) {
-        yield put(optionError ({error: response?.data?.data}));
+        yield put(optionError({error: response?.data?.data}));
       } else {
         yield put(optionSuccess(response.data));
       }
@@ -19,6 +20,6 @@ function* Option(action) {
     }
   }
   
-  export function* SignUpSaga() {
+  export function* OptionSaga() {
     yield takeLatest(action.OPTION_REQUEST, Option);
   }
