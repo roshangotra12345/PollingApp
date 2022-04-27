@@ -7,9 +7,51 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginRequest} from '../Redux/actions';
+import login from '../Redux/reducer/login';
 
 const Login = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const data = useSelector(state => state && state.login && state.login.data);
+
+  // useEffect(() => {
+  //   const handlCheck = () => {
+  //     if (data?.error == 'user not exists') {
+  //       navigation.navigate('Signup');
+  //     } else {
+  //       navigation.navigate('Question');
+  //     }
+  //   };
+  //   handlCheck();
+  // }, [data]);
+
+  const onHandleClick = async () => {
+    if (name.length > 3 && password.length > 4) {
+      dispatch(
+        loginRequest({
+          username: name,
+          password: password,
+          navigation:navigation
+        }),
+      );
+    } else {
+      alert('Please fill Your Details');
+    }
+    // try {
+    //   let response = await axios.get(
+    //     `https://secure-refuge-14993.herokuapp.com/login?username=${name}&password=${password}`,
+    //   );
+    //   let item = {name, password};
+
+    // } catch (error) {
+    // }
+  };
+
   return (
     <>
       <ImageBackground
@@ -26,23 +68,28 @@ const Login = ({navigation}) => {
               </View>
 
               <View style={styles.email}>
-                <Text style={styles.text3}>Your Email</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={styles.text3}>Your Name</Text>
+                <TextInput
+                  onChangeText={name => setName(name)}
+                  style={styles.textInput}
+                />
               </View>
 
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  onChangeText={password => setPassword(password)}
+                  secureTextEntry={true}
+                  style={styles.textInput}
+                />
               </View>
               <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
                 <Text style={styles.text3}>New User Click Here?</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Question')}>
+          {/* onPress={() => navigation.navigate('Question')} */}
+          <TouchableOpacity style={styles.button} onPress={onHandleClick}>
             <Text style={styles.butto}>Login</Text>
           </TouchableOpacity>
         </ImageBackground>
@@ -68,7 +115,7 @@ const styles = StyleSheet.create({
   btton: {
     width: '100%',
 
-    height: 80,
+    height: 60,
   },
   text: {
     color: 'white',
@@ -103,6 +150,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: '#1A1E1E',
+    color: 'white',
   },
   button: {
     backgroundColor: '#19A54A',

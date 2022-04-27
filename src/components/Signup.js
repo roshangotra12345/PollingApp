@@ -6,10 +6,47 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from 'react-native';
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
+import {Picker} from '@react-native-picker/picker';
+import {useDispatch} from 'react-redux';
+import {signupRequest} from '../Redux/actions';
 
 const Signup = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [admin, setAdmin] = useState('');
+  const [password, setPassword] = useState('');
+  //const [country, setCountry] = useState('Unknown');
+
+  const handleClick = async () => {
+    if (name.length > 3 && password.length > 3) {
+      dispatch(
+        signupRequest({
+          username: name,
+          password: password,
+          role: admin,
+        }),
+        navigation.navigate('Login'),
+        setName(''),
+        setPassword(''),
+        alert('Registered Successfull'),
+      );
+    } else {
+      alert('Pleases fillYour Details');
+    }
+    // try {
+    //   let response = await axios.get(
+    //     `https://secure-refuge-14993.herokuapp.com/add_user?username=${name}&password=${password}&role=admin`,
+    //   );
+    //   let item = {name, email, password};
+
+    // } catch (error) {
+    // }
+  };
+
   return (
     <>
       <ImageBackground
@@ -25,18 +62,48 @@ const Signup = ({navigation}) => {
                 <Text style={styles.text2}>Create Your Account</Text>
               </View>
               <View style={styles.email}>
-                <Text style={styles.text3}>Your NAME</Text>
-                <TextInput style={styles.textInput} />
-              </View>
-
-              <View style={styles.email}>
-                <Text style={styles.text3}>Your Email</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={styles.text3}>Your Name</Text>
+                <TextInput
+                  style={styles.textInput}
+                  value={name}
+                  onChangeText={name => setName(name)}
+                />
               </View>
 
               <View style={styles.email}>
                 <Text style={styles.text3}>Password</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput
+                  style={styles.textInput}
+                  secureTextEntry={true}
+                  value={password}
+                  onChangeText={password => setPassword(password)}
+                />
+
+                {/* <View style={styles.email}>
+                  <Text style={styles.text3}>Your Role</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={email}
+                    onChangeText={email => setEmail(email)}
+                  />
+                </View> */}
+
+                <View>
+                  <Picker
+                    selectedValue={admin}
+                    onValueChange={(value, index) => setAdmin(value)}
+                    mode="dropdown" // Android only
+                    style={styles.Input}>
+                    <Picker.Item
+                      style={styles.Input}
+                      label="Please select your Role"
+                      value="Unknown"
+                    />
+                    <Picker.Item label="user" value="user" />
+                    <Picker.Item label="admin" value="admin" />
+                  </Picker>
+                </View>
+
                 <TouchableOpacity
                   style={styles.text2}
                   onPress={() => navigation.goBack()}>
@@ -45,7 +112,7 @@ const Signup = ({navigation}) => {
               </View>
             </View>
           </ScrollView>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleClick}>
             <Text style={styles.butto}>Register</Text>
           </TouchableOpacity>
         </ImageBackground>
@@ -122,6 +189,15 @@ const styles = StyleSheet.create({
   },
   butto: {
     fontSize: 24,
+    color: 'white',
+  },
+  Input: {
+    padding: 5,
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+
+    backgroundColor: '#1A1E1E',
     color: 'white',
   },
 });
