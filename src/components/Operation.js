@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View,ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,13 +10,14 @@ const Operation = props => {
   const [modalVisible , setModalVisible] = useState(false);
   const [modalVisible1 , setModalVisible1] = useState(false);
   const [idState , setidState] = useState("")
-  
+  //const [edit, setEdit] = useState('');
   const handleModal = (id) =>{
     setidState(id)
   setModalVisible(!modalVisible);
   } 
   const handleModal1 = () =>{
     setModalVisible1(!modalVisible1);
+   // setEdit(item)
     } 
   const dispatch = useDispatch();
   const data = useSelector(state => state.AllList.data.data);
@@ -32,6 +33,7 @@ const Operation = props => {
   console.log(idState);
 
   return (
+    <ScrollView>
     <View style={styles.view1}>
       {newPoll.map(item => {
         return (
@@ -39,7 +41,7 @@ const Operation = props => {
             <View >
               <View style={styles.one}>
                 <Text>{item.title}</Text>
-                <TouchableOpacity onPress={handleModal1 }>
+                <TouchableOpacity onPress={handleModal1}>
                   <Icon name="edit" size={30} color="white" />
                 </TouchableOpacity>
               </View>
@@ -51,7 +53,6 @@ const Operation = props => {
                 </TouchableOpacity>
             </View>
 
-            
           </>
         );
       })}
@@ -66,11 +67,13 @@ const Operation = props => {
                   <Text style={styles.btn}>Submit Your poll</Text>
                 </TouchableOpacity>
                <Layout modalVisible={modalVisible} setModalVisible={setModalVisible} idState={idState} /> 
-               <Layout1 modalVisible1={modalVisible1} setModalVisible1={setModalVisible1}/>
+               <Layout1 modalVisible1={modalVisible1} setModalVisible1={setModalVisible1} title={newPoll}/>
           
             
 
     </View>
+    </ScrollView>
+    
   );
 };
 

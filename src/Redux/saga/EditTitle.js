@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function* EditTitle(action) {
 
-  // let url = `https://secure-refuge-14993.herokuapp.com/delete_poll_option?id=${action.payload.id}&option_text=${action.payload.option}`;
+ let url = `https://secure-refuge-14993.herokuapp.com/update_poll_title?id=577212fdd1bba33c17b5b64e&title=newtitle`;
   try {
     let response = yield call(axios.get, url);
     if (response?.data?.error) {

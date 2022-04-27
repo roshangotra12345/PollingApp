@@ -5,10 +5,12 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const Layout = ({modalVisible,setModalVisible , idState}) => {
   const [option, setOption] = useState('');
+  
   //const [modalVisible , setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const optionOperation = async () => {
     console.log(idState , option , "-----------> edit")
+    if(option){
     dispatch(optionRequest({id : idState, 
       option:option}));
     setTimeout(() => {
@@ -16,7 +18,7 @@ const Layout = ({modalVisible,setModalVisible , idState}) => {
     }, 10);
     setModalVisible(!modalVisible);
   };
-  
+}
   return (
     <View style={styles.centeredView}>
       <Modal

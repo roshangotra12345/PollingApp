@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View,TextInput } from "react-native";
 import {useDispatch, useSelector} from 'react-redux';
-const Layout1 = ({modalVisible1,setModalVisible1}) => {
+const Layout1 = ({modalVisible1,setModalVisible1,title}) => {
   //const [modalVisible1 , setModalVisible1] = useState(false);
-
+ // console.log(item)
+ console.log(title)
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -17,6 +18,7 @@ const Layout1 = ({modalVisible1,setModalVisible1}) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+            {/* //value={edit} onChangeText={edit=>setEdit(edit)} */}
             <TextInput style={styles.textInput} />
 {/*             
             <Text style={styles.modalText}>Hello World!</Text> */}
