@@ -20,7 +20,7 @@ const Delete = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
         isError: false,
-        data: action.payload
+        data: action.payload,
       };
     case constant.DELETE_ERROR:
       return {
@@ -28,11 +28,10 @@ const Delete = (state = initialState, action) => {
         isLoading: false,
         isSuccess: false,
         isError: true,
-        data: action.payload
-      
+        data: action.payload,
       };
-    default: 
-      return state
+    default:
+      return state;
   }
 };
 

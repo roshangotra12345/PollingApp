@@ -22,7 +22,8 @@ const Signup = ({navigation}) => {
   //const [country, setCountry] = useState('Unknown');
 
   const handleClick = async () => {
-    if (name.length > 3 && password.length > 3) {
+    if (name.length > 3 && password.length > 3 && admin != '') {
+      // if (password.length > 4) {
       dispatch(
         signupRequest({
           username: name,
@@ -34,8 +35,11 @@ const Signup = ({navigation}) => {
         setPassword(''),
         alert('Registered Successfull'),
       );
+      // } else {
+      //   alert('your Password is large');
+      // }
     } else {
-      alert('Pleases fillYour Details');
+      alert('Your name and password length is small ');
     }
     // try {
     //   let response = await axios.get(

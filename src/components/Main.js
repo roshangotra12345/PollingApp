@@ -6,9 +6,20 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Main = ({navigation}) => {
+  useEffect(() => {
+    const datafromstorage = async () => {
+      const token = await AsyncStorage.getItem('token');
+      if (token !== null) {
+        navigation.navigate('Question');
+      }
+    };
+    datafromstorage();
+  }, []);
+
   return (
     <>
       <ImageBackground

@@ -12,12 +12,17 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginRequest} from '../Redux/actions';
 import login from '../Redux/reducer/login';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const data = useSelector(state => state && state.login && state.login.data);
+  //console.log(data?.error?.message, 'data m kuch hai ya nhiii');
+  //console.log(data, 'kya hau kucg dat j gsfctvgystfcvgy');
+  console.log(data, 'error m ky a hai');
+  // console.log(data.error, 'message aaa raha hai kya');
 
   // useEffect(() => {
   //   const handlCheck = () => {
@@ -29,18 +34,36 @@ const Login = ({navigation}) => {
   //   };
   //   handlCheck();
   // }, [data]);
+  // useEffect(() => {
+  //   const datafromstorage = async () => {
+  //     const token = await AsyncStorage.getItem('token');
+  //     if (token !== null) {
+  //       navigation.navigate('Question');
+  //     }
+  //   };
+  //   datafromstorage();
+  // }, []);
+
+  // const handlCheck = () => {
+  //   if (data?.error == 'user not exists') {
+  //     navigation.navigate('Signup');
+  //   } else {
+  //     navigation.navigate('Question');
+  //   }
+  // };
 
   const onHandleClick = async () => {
-    if (name.length > 3 && password.length > 4) {
+    if (name.length > 3 && password.length > 3) {
       dispatch(
         loginRequest({
           username: name,
           password: password,
-          navigation:navigation
+          navigation: navigation,
         }),
       );
-    } else {
-      alert('Please fill Your Details');
+    } //else if (data?.error?.message === 'Invalid token specified') {
+    else {
+      alert('Your length is to Small');
     }
     // try {
     //   let response = await axios.get(

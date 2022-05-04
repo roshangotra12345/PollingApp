@@ -1,13 +1,13 @@
 //import {alllistSuccess ,alllistError } from '../actions/index'
 //import { deleteSuccess,deleteError } from '../actions';
-import { alldeleteSuccess,alldeleteError } from '../actions';
+import {alldeleteSuccess, alldeleteError} from '../actions';
 import {call, put, takeLatest} from 'redux-saga/effects';
 import * as action from '../constant';
 import axios from 'axios';
 
 function* ALLDelete(action) {
-    let url = `https://secure-refuge-14993.herokuapp.com/delete_poll?id=${action.payload}`;
-    try {
+  let url = `https://secure-refuge-14993.herokuapp.com/delete_poll?id=${action.payload}`;
+  try {
     let response = yield call(axios.get, url);
     if (response?.data?.error) {
       yield put(alldeleteError({error: response?.data?.data}));
